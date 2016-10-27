@@ -1,0 +1,36 @@
+solr下载： http://lucene.apache.org/solr/downloads.html ( http://www.apache.org/dyn/closer.lua/lucene/solr/5.3.1)
+
+1. 解压缩 solr-5.3.1.zip， 到D:\dev\solr-5.3.1
+2. copy  D:\dev\solr-5.3.1\server\solr-webapp\webapp的全部内容到   D:\dev\solrwebapp
+
+3. copy D:\dev\solr-5.3.1\server\lib\ext的jar包到D:\dev\solrwebapp\WEB-INF\lib下
+
+4. 创建目录D:\dev\solrhome， copy D:\dev\solr-5.3.1\server\solr目录下的内容到D:\dev\solrhome
+
+5. 修改D:\dev\solrwebapp\WEB-INF\web.xml
+
+   <env-entry>
+       <env-entry-name>solr/home</env-entry-name>
+       <env-entry-value>D:/dev/solrhome</env-entry-value>
+       <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+
+6. 修改D:\dev\apache-tomcat-8.0.3\conf\server.xml, 在host里加入
+
+<Context path="/solr" docBase="D:/dev/solrwebapp" debug="0" crossContext="true"/>
+7. 启动tomcat, 浏览器中输入url：http://localhost:8080/solr
+
+
+参考： jingyan.baidu.com/article/d8072ac4625b07ec95cefdbe.html
+-------------------------------------------------------------------------------------------------------------
+8. 在D:\dev\solrhome目录下， 创建一个目录lyfirstcore， copy D:\dev\solrhome\configsets\basic_configs\con到D:\dev\solrhome\lyfirstcore\conf下
+
+9. 在D:\dev\solrhome目录下， 创建文件core.properties， 并编辑文件
+
+name=lyfirstcore
+10.访问页面http://localhost:8080/solr， 查看core Admin， 'lyfirstcore' 就显示出来了
+--------------------------------------------------------------------------------------------------------------------
+
+11. 新建索引
+
+Java -classpath D:/dev/solr-5.3.1/dist/solr-core-5.3.1.jar -Dport=8080 -Dauto=yes -Dc=lyfirstcore -Ddata=files -Drecursive=yes org.apache.solr.util.SimplePostTool D:/dev/solr-5.3.1/docs/
