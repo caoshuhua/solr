@@ -34,3 +34,12 @@ name=lyfirstcore
 11. 新建索引
 
 Java -classpath D:/dev/solr-5.3.1/dist/solr-core-5.3.1.jar -Dport=8080 -Dauto=yes -Dc=lyfirstcore -Ddata=files -Drecursive=yes org.apache.solr.util.SimplePostTool D:/dev/solr-5.3.1/docs/
+
+
+http://www.open-open.com/lib/view/open1421978002609.html
+
+
+
+
+
+solr
